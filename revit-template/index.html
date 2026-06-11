@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Revit Template + Onboarding — Interscale</title>
+<meta name="description" content="A production-ready Revit project template built to Australian AEC standards, with hands-on team onboarding. Limited launch — onboarding slots for July 2026. Register before 30 June." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #08133A;
+    --deep-navy: #0A1F4C;
+    --slate: #151F42;
+    --orange: #FF9100;
+    --amber: #FFA400;
+    --grey: #76797C;
+    --soft-grey: #F3F3F3;
+    --white: #FFFFFF;
+    --line: rgba(255,255,255,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .btn {
+    display: inline-block; background: var(--orange); color: var(--navy);
+    font-weight: 700; font-size: 1.02rem; text-decoration: none;
+    padding: 15px 30px; border-radius: 10px; border: none; cursor: pointer;
+    transition: transform .12s ease, background .12s ease; letter-spacing: .2px;
+  }
+  .btn:hover { background: var(--amber); transform: translateY(-2px); }
+  .btn-lg { font-size: 1.12rem; padding: 17px 38px; }
+
+  /* Top bar */
+  .topbar { background: var(--navy); border-bottom: 1px solid var(--line); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; }
+  .topbar img { height: 30px; display: block; }
+  .topbar .phone { color: var(--white); font-weight: 600; font-size: .96rem; text-decoration: none; opacity: .92; }
+  .topbar .phone:hover { color: var(--orange); }
+
+  /* Hero */
+  .hero {
+    position: relative; color: var(--white);
+    background: linear-gradient(120deg, rgba(8,19,58,0.94) 0%, rgba(8,19,58,0.72) 48%, rgba(10,31,76,0.55) 100%), var(--navy);
+    overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background-image: url('assets/revit-hero-bg.png');
+    background-size: cover; background-position: center right; opacity: .55; mix-blend-mode: screen;
+  }
+  .hero .wrap { position: relative; z-index: 1; padding-top: 84px; padding-bottom: 92px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; background: rgba(255,145,0,0.16);
+    color: var(--amber); border: 1px solid rgba(255,145,0,0.4);
+    font-weight: 600; font-size: .82rem; letter-spacing: .6px; text-transform: uppercase;
+    padding: 7px 14px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.35rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.5px; }
+  .hero h1 .accent { color: var(--orange); }
+  .hero p.sub { margin-top: 20px; font-size: 1.14rem; color: rgba(255,255,255,0.86); max-width: 540px; }
+  .hero-cta { margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .hero-cta .note { font-size: .9rem; color: rgba(255,255,255,0.7); }
+
+  /* Offer card in hero */
+  .offer-card {
+    background: var(--white); color: var(--navy); border-radius: 16px; padding: 30px 30px 28px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.4); border-top: 5px solid var(--orange);
+  }
+  .offer-card h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 4px; }
+  .offer-card .dl { color: var(--orange); font-weight: 700; font-size: .92rem; text-transform: uppercase; letter-spacing: .5px; }
+  .offer-card ul { list-style: none; margin: 18px 0 22px; }
+  .offer-card li { position: relative; padding-left: 28px; margin-bottom: 11px; font-size: .98rem; color: #2a3354; }
+  .offer-card li::before { content: ""; position: absolute; left: 0; top: 7px; width: 15px; height: 15px; border-radius: 50%; background: var(--orange); }
+  .offer-card li::after { content: ""; position: absolute; left: 5px; top: 11px; width: 4px; height: 7px; border: solid var(--white); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .offer-card .btn { width: 100%; text-align: center; }
+
+  /* Strip */
+  .strip { background: var(--orange); color: var(--navy); text-align: center; font-weight: 700; }
+  .strip .wrap { padding: 14px 24px; font-size: 1.02rem; letter-spacing: .2px; }
+
+  /* Sections */
+  section.block { padding: 84px 0; }
+  .eyebrow { color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; font-size: .82rem; margin-bottom: 12px; }
+  h2.section-title { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.4px; max-width: 760px; }
+  .lead { font-size: 1.1rem; color: #44506e; max-width: 720px; margin-top: 16px; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; }
+  .card { background: var(--soft-grey); border-radius: 14px; padding: 30px 26px; border: 1px solid #e7e9ef; }
+  .card .ico { width: 46px; height: 46px; border-radius: 11px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .card .ico span { color: var(--orange); font-weight: 800; font-size: 1.3rem; }
+  .card h4 { font-size: 1.16rem; font-weight: 700; margin-bottom: 8px; }
+  .card p { color: #4a566f; font-size: .98rem; }
+
+  /* Bundle / what's included */
+  .included { background: var(--navy); color: var(--white); }
+  .included .eyebrow { color: var(--amber); }
+  .included h2.section-title { color: var(--white); }
+  .inc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; margin-top: 40px; }
+  .inc-grid .item { display: flex; gap: 16px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+  .inc-grid .num { color: var(--orange); font-weight: 800; font-size: 1.05rem; flex: 0 0 auto; width: 26px; }
+  .inc-grid .item h4 { font-size: 1.08rem; font-weight: 700; margin-bottom: 4px; }
+  .inc-grid .item p { color: rgba(255,255,255,0.74); font-size: .96rem; }
+
+  /* Trust */
+  .trust { text-align: center; }
+  .trust .badges { display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: center; align-items: center; margin-top: 30px; }
+  .trust .badge { background: var(--soft-grey); border: 1px solid #e3e6ee; border-radius: 999px; padding: 11px 22px; font-weight: 600; color: #2a3354; font-size: .96rem; }
+  .trust .badge b { color: var(--orange); }
+
+  /* CTA / form */
+  .cta { background: linear-gradient(135deg, var(--deep-navy), var(--navy)); color: var(--white); }
+  .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .cta h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; line-height: 1.12; }
+  .cta p { color: rgba(255,255,255,0.82); margin-top: 16px; font-size: 1.06rem; max-width: 480px; }
+  .cta .deadline { margin-top: 22px; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,145,0,0.14); border: 1px solid rgba(255,145,0,0.4); color: var(--amber); padding: 10px 18px; border-radius: 10px; font-weight: 600; }
+  form { background: var(--white); border-radius: 16px; padding: 30px; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+  form h3 { color: var(--navy); font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+  form .fhint { color: var(--grey); font-size: .92rem; margin-bottom: 20px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; color: var(--navy); font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 13px 14px; border: 1.5px solid #d7dbe6; border-radius: 9px;
+    font-family: inherit; font-size: 1rem; color: var(--navy); background: var(--white); transition: border-color .12s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--orange); }
+  .field textarea { resize: vertical; min-height: 72px; }
+  form .btn { width: 100%; text-align: center; margin-top: 6px; }
+  form .privacy { color: var(--grey); font-size: .82rem; margin-top: 14px; text-align: center; }
+
+  /* Footer */
+  footer { background: var(--slate); color: rgba(255,255,255,0.78); padding: 52px 0 40px; }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+  footer img { height: 30px; margin-bottom: 16px; }
+  footer .col p { font-size: .94rem; margin-bottom: 6px; }
+  footer a { color: rgba(255,255,255,0.78); text-decoration: none; }
+  footer a:hover { color: var(--orange); }
+  footer .socials { display: flex; gap: 18px; margin-top: 12px; font-weight: 600; }
+  .foot-legal { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .85rem; color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 900px) {
+    .hero-grid, .cta-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cards, .inc-grid { grid-template-columns: 1fr; }
+    .hero .wrap { padding-top: 56px; padding-bottom: 64px; }
+    section.block { padding: 60px 0; }
+    .topbar .phone { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <img src="assets/interscale-logo-white.png" alt="Interscale" />
+      <a class="phone" href="tel:1300205999">1300 205 999</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">★ Foundation cohort — July 2026</span>
+          <h1>Stop rebuilding Revit <span class="accent">from scratch</span> on every project.</h1>
+          <p class="sub">Start every job from a Revit project template built to Australian AEC standards — with hands-on onboarding so your whole team actually uses it.</p>
+          <div class="hero-cta">
+            <a class="btn btn-lg" href="#register">Claim your launch slot</a>
+            <span class="note">Onboarding slots for July are limited.</span>
+          </div>
+        </div>
+        <div class="offer-card">
+          <span class="dl">Limited launch</span>
+          <h3>Revit Template + Onboarding Bundle</h3>
+          <ul>
+            <li>Ready-to-use Revit project template (.rte)</li>
+            <li>Preloaded families, views, sheets & title blocks</li>
+            <li>Hands-on team onboarding — not a PDF</li>
+            <li>Tailored to how your practice works</li>
+          </ul>
+          <a class="btn" href="#register">Register before 30 June</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Urgency strip -->
+  <div class="strip">
+    <div class="wrap">⏳ Foundation cohort closes Monday 30 June 2026 · Onboarding slots for July are limited</div>
+  </div>
+
+  <!-- Problem / value -->
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">The problem with starting from scratch</p>
+      <h2 class="section-title">Same setup, every project. Inconsistent drawings, every time.</h2>
+      <p class="lead">When every job begins by rebuilding view templates, re-importing families and re-fixing title blocks, you pay for the same hour of setup over and over — and no two projects end up looking quite the same. New staff take weeks to get up to speed. A proper template fixes the setup. Onboarding fixes the adoption.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="ico"><span>1</span></div>
+          <h4>Less rework</h4>
+          <p>Start documented, consistent and compliant from the first sheet — not after three rounds of cleanup.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><span>2</span></div>
+          <h4>Faster onboarding</h4>
+          <p>New team members open a familiar, standardised project and are productive in days, not weeks.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><span>3</span></div>
+          <h4>One firm standard</h4>
+          <p>Every project, every person, working from the same template — so your output looks like one practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section class="block included">
+    <div class="wrap">
+      <p class="eyebrow">What's in the bundle</p>
+      <h2 class="section-title">A template your team will actually use.</h2>
+      <div class="inc-grid">
+        <div class="item">
+          <div class="num">01</div>
+          <div>
+            <h4>Standards-built project template</h4>
+            <p>A ready-to-use Revit template (.rte) with families, view templates, sheets, schedules and naming set up to Australian AEC conventions.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="num">02</div>
+          <div>
+            <h4>Hands-on team onboarding</h4>
+            <p>Live, practical sessions that get your whole team working from the standard from day one — not a document that sits unread.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="num">03</div>
+          <div>
+            <h4>Tailored to your practice</h4>
+            <p>We adapt the template to how your firm actually works — your title blocks, your disciplines, your conventions.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="num">04</div>
+          <div>
+            <h4>Backed by Interscale BIM support</h4>
+            <p>The AEC technology enablement partner that keeps it running after launch, so the standard holds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="block trust">
+    <div class="wrap">
+      <p class="eyebrow">Why Interscale</p>
+      <h2 class="section-title" style="margin:0 auto;">Australia's AEC technology enablement partner</h2>
+      <p class="lead" style="margin:16px auto 0;">We're the technology backbone for Architecture, Engineering &amp; Construction firms across Melbourne, Brisbane and Sydney — BIM, managed IT, cybersecurity and training.</p>
+      <div class="badges">
+        <div class="badge"><b>ISO 27001</b> certified</div>
+        <div class="badge">Trusted by the <b>Department of Defence</b></div>
+        <div class="badge">Solomon Island Government</div>
+        <div class="badge">Essential Services Commission</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / form -->
+  <section class="block cta" id="register">
+    <div class="wrap">
+      <div class="cta-grid">
+        <div>
+          <h2>Claim a July onboarding slot.</h2>
+          <p>Tell us about your team and we'll be in touch to secure your place in the foundation cohort. No obligation — just a conversation about your Revit standards.</p>
+          <div class="deadline">⏳ Register before Monday 30 June 2026</div>
+        </div>
+        <form id="enquiry" onsubmit="return sendEnquiry(event)">
+          <h3>Register your interest</h3>
+          <p class="fhint">We'll reply from hello@interscale.com.au.</p>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required placeholder="Jane Smith" />
+          </div>
+          <div class="field">
+            <label for="company">Firm / practice</label>
+            <input type="text" id="company" name="company" required placeholder="Your architecture or engineering firm" />
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" required placeholder="jane@yourfirm.com.au" />
+          </div>
+          <div class="field">
+            <label for="team">Team size using Revit</label>
+            <select id="team" name="team" required>
+              <option value="" disabled selected>Select…</option>
+              <option>1–5</option>
+              <option>6–15</option>
+              <option>16–40</option>
+              <option>40+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Anything we should know? (optional)</label>
+            <textarea id="message" name="message" placeholder="Your current Revit setup, pain points, timeline…"></textarea>
+          </div>
+          <button type="submit" class="btn">Secure my launch slot</button>
+          <p class="privacy">By submitting you agree to be contacted about this enquiry.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="col">
+          <img src="assets/interscale-logo-white.png" alt="Interscale" />
+          <p>AEC technology enablement &amp; support partner.</p>
+          <p>Melbourne · Brisbane · Sydney</p>
+        </div>
+        <div class="col">
+          <p><strong style="color:#fff;">Talk to us</strong></p>
+          <p><a href="mailto:hello@interscale.com.au">hello@interscale.com.au</a></p>
+          <p><a href="tel:1300205999">1300 205 999</a></p>
+          <p><a href="https://interscale.com.au">interscale.com.au</a></p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/company/interscalesolutions/">LinkedIn</a>
+            <a href="https://www.instagram.com/interscale.it/">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-legal">
+        © 2026 Interscale Solutions. ISO 27001 certified. Revit is a trademark of Autodesk, Inc.; Interscale is an independent technology partner and is not affiliated with Autodesk.
+      </div>
+    </div>
+  </footer>
+
+<script>
+  function sendEnquiry(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var team = document.getElementById('team').value;
+    var message = document.getElementById('message').value.trim();
+
+    var subject = 'Revit Template + Onboarding — launch slot enquiry';
+    var bodyLines = [
+      'New enquiry from the Revit Template launch page:',
+      '',
+      'Name: ' + name,
+      'Firm / practice: ' + company,
+      'Work email: ' + email,
+      'Revit team size: ' + team,
+      '',
+      'Message:',
+      (message || '(none)'),
+      '',
+      'Please contact me about a July onboarding slot (register before 30 June 2026).'
+    ];
+    var href = 'mailto:hello@interscale.com.au'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+    window.location.href = href;
+    return false;
+  }
+</script>
+</body>
+</html>

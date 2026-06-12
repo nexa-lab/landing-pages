@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Put Your Busywork on Autopilot | Interscale Automation</title>
+<meta name="description" content="Interscale automates the repetitive admin layer with AI-driven workflows and analytics — so your experts are freed for the work that matters. Book a free automation assessment." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #08133A;
+    --deep-navy: #0A1F4C;
+    --slate: #151F42;
+    --orange: #FF9100;
+    --amber: #FFA400;
+    --grey: #76797C;
+    --soft: #F3F3F3;
+    --line: #E2E5EA;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(8, 19, 58, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav img { height: 30px; width: auto; display: block; }
+  .nav .cta-sm {
+    background: var(--orange); color: var(--navy); font-weight: 700;
+    padding: 10px 18px; border-radius: 999px; font-size: 14px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .nav .cta-sm:hover { background: var(--amber); transform: translateY(-1px); }
+
+  /* Hero */
+  .hero {
+    position: relative; color: var(--white);
+    background:
+      linear-gradient(90deg, rgba(8,19,58,0.96) 0%, rgba(8,19,58,0.78) 45%, rgba(10,31,76,0.55) 100%),
+      url("assets/automation-hero.png") center/cover no-repeat,
+      var(--navy);
+    padding: 92px 0 104px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 60px); font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.5px; max-width: 16ch;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero p.sub {
+    margin-top: 22px; font-size: clamp(16px, 2.2vw, 20px); font-weight: 300;
+    max-width: 52ch; color: #D7DCE6;
+  }
+  .hero-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    display: inline-block; font-weight: 700; border-radius: 999px;
+    padding: 15px 30px; font-size: 16px; cursor: pointer; border: none;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary { background: var(--orange); color: var(--navy); box-shadow: 0 10px 30px rgba(255,145,0,0.28); }
+  .btn-primary:hover { background: var(--amber); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.35); }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+  .hero .trust-row { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: #B9C0CE; }
+  .hero .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero .trust-row .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+
+  /* Section base */
+  section.block { padding: 80px 0; }
+  .eyebrow { color: var(--orange); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: 13px; }
+  h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 700; letter-spacing: -0.4px; margin-top: 10px; line-height: 1.15; }
+  .lead { color: var(--grey); font-size: 18px; max-width: 60ch; margin-top: 16px; }
+
+  /* Problem strip */
+  .strip { background: var(--soft); }
+  .pain { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 38px; }
+  .pain div {
+    background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 22px; font-weight: 500; color: var(--navy);
+  }
+  .pain div small { display: block; color: var(--grey); font-weight: 400; margin-top: 6px; }
+
+  /* Benefits */
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 46px; }
+  .card {
+    border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px;
+    background: var(--white); transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(8,19,58,0.08); }
+  .card .ico {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    background: rgba(255,145,0,0.12); color: var(--orange); font-size: 22px; font-weight: 800; margin-bottom: 16px;
+  }
+  .card h3 { font-size: 20px; font-weight: 700; }
+  .card p { color: var(--grey); margin-top: 8px; font-size: 15.5px; }
+
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; margin-top: 46px; counter-reset: step; }
+  .step { position: relative; padding: 28px 24px; border-radius: 16px; background: var(--navy); color: var(--white); }
+  .step .n { color: var(--orange); font-weight: 800; font-size: 15px; letter-spacing: 1px; }
+  .step h3 { font-size: 19px; font-weight: 600; margin-top: 8px; }
+  .step p { color: #C3CAD8; font-size: 15px; margin-top: 8px; }
+
+  /* Trust band */
+  .trust { background: var(--navy); color: var(--white); }
+  .trust .inner { display: flex; flex-wrap: wrap; align-items: center; gap: 30px 48px; justify-content: space-between; }
+  .trust .badges { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .trust .badges img { height: 64px; width: auto; background: var(--white); padding: 8px 12px; border-radius: 10px; }
+  .trust ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 28px; }
+  .trust ul li { font-size: 15px; color: #C9D0DE; display: flex; align-items: center; gap: 9px; }
+  .trust ul li::before { content: "✓"; color: var(--orange); font-weight: 800; }
+
+  /* CTA / Form */
+  .cta { background: linear-gradient(160deg, var(--deep-navy), var(--navy)); color: var(--white); }
+  .cta-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: start; }
+  .cta h2 { color: var(--white); }
+  .cta .lead { color: #C7CEDC; }
+  .cta .contact { margin-top: 26px; display: grid; gap: 12px; font-size: 16px; }
+  .cta .contact a { color: var(--white); font-weight: 600; }
+  .cta .contact span { color: var(--orange); margin-right: 8px; }
+  form {
+    background: var(--white); color: var(--navy); border-radius: 18px; padding: 30px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  }
+  form h3 { font-size: 21px; font-weight: 700; }
+  form p.note { color: var(--grey); font-size: 14px; margin: 6px 0 18px; }
+  label { display: block; font-size: 13px; font-weight: 600; margin: 14px 0 6px; }
+  input, textarea, select {
+    width: 100%; border: 1.5px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; font-family: inherit; font-size: 15px; color: var(--navy); background: #FCFCFD;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--orange); }
+  textarea { resize: vertical; min-height: 92px; }
+  form .btn-primary { width: 100%; margin-top: 22px; }
+
+  /* Footer */
+  footer { background: #060E2B; color: #9AA3B6; padding: 46px 0; font-size: 14px; }
+  footer .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; }
+  footer img { height: 28px; }
+  footer .social { display: flex; gap: 18px; }
+  footer .social a:hover { color: var(--orange); }
+  footer .legal { margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; line-height: 1.7; }
+
+  @media (max-width: 760px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 64px 0 72px; }
+    section.block { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <img src="assets/interscale-logo-white.png" alt="Interscale" />
+    <a class="cta-sm" href="#enquire">Free assessment</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Put your busywork <span class="accent">on autopilot.</span></h1>
+    <p class="sub">Your best people lose hours to repetitive admin — data entry, reformatting reports, chasing approvals. Interscale automates that layer with AI-driven workflows, so your experts are freed for the work that matters.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#enquire">Book a free automation assessment</a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+    <div class="trust-row">
+      <span><span class="dot"></span> ISO 27001 certified</span>
+      <span><span class="dot"></span> Melbourne · Brisbane · Sydney</span>
+      <span><span class="dot"></span> Australian-founded technology partner</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="block strip">
+  <div class="wrap">
+    <div class="eyebrow">The hidden cost of manual work</div>
+    <h2>Skilled time, spent on the wrong things</h2>
+    <p class="lead">A surprising amount of expert time goes to work software should be doing. It's slow, error-prone, and it quietly caps how much your team can take on.</p>
+    <div class="pain">
+      <div>Re-keying data between systems<small>Hours lost to copy-paste and double entry</small></div>
+      <div>Reformatting the same reports<small>Manual assembly every week or month</small></div>
+      <div>Chasing approvals and sign-offs<small>Work stalls waiting in inboxes</small></div>
+      <div>Moving files between tools<small>Systems that don't talk to each other</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="block" id="benefits">
+  <div class="wrap">
+    <div class="eyebrow">What automation gives you</div>
+    <h2>Less manual handling. More momentum.</h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="ico">↻</div>
+        <h3>Fewer errors</h3>
+        <p>Automated workflows run the same way every time — no missed steps, no transcription mistakes, full auditability.</p>
+      </div>
+      <div class="card">
+        <div class="ico">⚡</div>
+        <h3>Faster turnaround</h3>
+        <p>Tasks that waited in queues now run in the background, so work moves through your business in hours, not days.</p>
+      </div>
+      <div class="card">
+        <div class="ico">↑</div>
+        <h3>Scale without headcount</h3>
+        <p>Take on more volume without adding admin load — your team focuses on judgement, clients and growth.</p>
+      </div>
+      <div class="card">
+        <div class="ico">◆</div>
+        <h3>Experts on real work</h3>
+        <p>Free your specialists from busywork so their time goes to the work only they can do.</p>
+      </div>
+      <div class="card">
+        <div class="ico">▥</div>
+        <h3>Clear visibility</h3>
+        <p>AI and analytics surface what's happening across your processes, so decisions are based on live data.</p>
+      </div>
+      <div class="card">
+        <div class="ico">⛨</div>
+        <h3>Secure by design</h3>
+        <p>Handled with care, consistency and proper control by an ISO 27001 certified partner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="block strip" id="how">
+  <div class="wrap">
+    <div class="eyebrow">How we work with you</div>
+    <h2>From manual to automated, the practical way</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">STEP 01</div>
+        <h3>Map</h3>
+        <p>We map how your processes actually run and find the repetitive, rules-based steps worth automating first.</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 02</div>
+        <h3>Automate</h3>
+        <p>We build AI-driven workflows that connect your systems and run the manual steps reliably in the background.</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 03</div>
+        <h3>Measure</h3>
+        <p>Analytics show the hours saved and errors avoided, so the value is visible and the wins compound.</p>
+      </div>
+      <div class="step">
+        <div class="n">STEP 04</div>
+        <h3>Scale</h3>
+        <p>We extend automation across more of your operation as confidence grows, with proper control throughout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="block trust">
+  <div class="wrap inner">
+    <div class="badges">
+      <img src="assets/interscale-iso-badges.webp" alt="ISO 9001 and ISO 27001 certified" />
+    </div>
+    <ul>
+      <li>ISO 27001 certified</li>
+      <li>Trusted by the Department of Defence</li>
+      <li>Solomon Island Government</li>
+      <li>Essential Services Commission</li>
+      <li>Local teams in Melbourne, Brisbane &amp; Sydney</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="block cta" id="enquire">
+  <div class="wrap cta-grid">
+    <div>
+      <div class="eyebrow">Free automation assessment</div>
+      <h2>See where the hours are hiding</h2>
+      <p class="lead">Tell us a little about your operation and we'll show you where automation will pay off first — no obligation. We'll get back to you within one business day.</p>
+      <div class="contact">
+        <div><span>Email</span><a href="mailto:hello@interscale.com.au">hello@interscale.com.au</a></div>
+        <div><span>Phone</span><a href="tel:1300205999">1300 205 999</a></div>
+        <div><span>Web</span><a href="https://interscale.com.au" target="_blank" rel="noopener">interscale.com.au</a></div>
+      </div>
+    </div>
+
+    <form id="enquiry" onsubmit="return sendEnquiry(event)">
+      <h3>Book your assessment</h3>
+      <p class="note">Takes a minute. Opens a pre-filled email to our team.</p>
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" required placeholder="Your name" />
+      <label for="company">Company</label>
+      <input id="company" name="company" type="text" required placeholder="Company name" />
+      <label for="email">Work email</label>
+      <input id="email" name="email" type="email" required placeholder="you@company.com.au" />
+      <label for="phone">Phone (optional)</label>
+      <input id="phone" name="phone" type="tel" placeholder="0400 000 000" />
+      <label for="area">What would you most like to automate?</label>
+      <select id="area" name="area">
+        <option>Data entry &amp; reporting</option>
+        <option>Approvals &amp; workflows</option>
+        <option>Document &amp; file handling</option>
+        <option>Connecting systems / integrations</option>
+        <option>Not sure yet — help me find out</option>
+      </select>
+      <label for="message">Anything else? (optional)</label>
+      <textarea id="message" name="message" placeholder="A line about your current process or biggest time-sink"></textarea>
+      <button class="btn btn-primary" type="submit">Book my free assessment</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <img src="assets/interscale-logo-white.png" alt="Interscale" />
+      <div class="social">
+        <a href="https://www.linkedin.com/company/interscalesolutions/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/interscale.it/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/interscale.IT/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.youtube.com/channel/UCehYONjAZ2GIUXQ1_NGeTuA" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="legal">
+      Interscale — Australian-founded AEC technology enablement &amp; managed IT partner.
+      ISO 27001 certified. Local teams in Melbourne, Brisbane and Sydney, with a presence in Indonesia and Singapore.<br />
+      hello@interscale.com.au · 1300 205 999 · © 2026 Interscale. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function sendEnquiry(e) {
+    e.preventDefault();
+    var f = e.target;
+    var name = f.name.value.trim();
+    var company = f.company.value.trim();
+    var email = f.email.value.trim();
+    var phone = f.phone.value.trim();
+    var area = f.area.value;
+    var message = f.message.value.trim();
+    var subject = "Free automation assessment — " + (company || name);
+    var body =
+      "Hi Interscale team,\n\nI'd like to book a free automation assessment.\n\n" +
+      "Name: " + name + "\n" +
+      "Company: " + company + "\n" +
+      "Work email: " + email + "\n" +
+      "Phone: " + (phone || "—") + "\n" +
+      "Most like to automate: " + area + "\n" +
+      "Notes: " + (message || "—") + "\n\n" +
+      "Thanks!";
+    window.location.href =
+      "mailto:hello@interscale.com.au?subject=" +
+      encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    return false;
+  }
+</script>
+</body>
+</html>
